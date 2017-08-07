@@ -6,7 +6,7 @@ func main() {
 	twoSum(mySlice, myLength)
 }
 
-//TwoSum takes a slice of integers and a target sum and returns a slice of int
+//twoSum takes a slice of integers and a target sum and returns a slice of int
 //that says which index values of the slice made up that sum
 func twoSum(nums []int, target int) []int {
 	length := len(nums) //assign the number of elements in the slice to variable length
