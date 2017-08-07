@@ -19,12 +19,10 @@ func twoSum(nums []int, target int) []int {
 
 	for i:=0; i<length; i++ { //while i is less that the length of the slice
 		c := target - nums[i]   // c equals the target minus the value in the slice of int
-    fmt.Println(c)
 		if _,ok := resMap[c]; ok {    //if the key for the target minus the value exists
-			fmt.Println([]int{resMap[c],i}) //return a slice of int containing the index where the value lives and the index
+			return []int{resMap[c],i} //return a slice of int containing the index where the value lives and the index
 		} else { //otherwise
 			resMap[nums[i]]=i  //store into resMap with the value in the slice as the key and the index location as the value
-      fmt.Println(resMap)
 		}
 	}
 
