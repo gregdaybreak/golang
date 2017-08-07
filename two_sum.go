@@ -1,9 +1,11 @@
 package main
 
+import "fmt"
+
 func main() {
 	mySlice := []int{2, 7, 11, 15}
 	myLength := 17
-	twoSum(mySlice, myLength)
+	fmt.Println(twoSum(mySlice, myLength))
 }
 
 //twoSum takes a slice of integers and a target sum and returns a slice of int
