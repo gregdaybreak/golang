@@ -1,8 +1,6 @@
 
 package main
 
-import "fmt"
-
 func main() {
     mySlice := []int{2, 7, 11, 15,}
     myLength := 17
