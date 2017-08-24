@@ -38,5 +38,6 @@ func main() {
 
   fmt.Println("The student directly behind John is", john.Next.name) //or get to Kyle through john
 
-  fmt.Println("The student directly behind Kyle is", kyle.Next)
+  fmt.Println("The student directly behind Kyle is", kyle.Next) //Kyle is the last kid so his Next is nil (no one is behind him)
+  
 }
