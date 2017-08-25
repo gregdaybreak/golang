@@ -16,11 +16,22 @@ type Student struct {
 	Next *Student
 }
 
+func reverse(curr *Student) *Student {
+	if curr.Next == nil { //if the pointer of the next link is nil we know this is the last thing
+		return curr //return the last item in the list
+	}
+	newHead := reverse(curr.Next)
+	curr.Next.Next = curr //make curr link to the last node in the list
+	curr.Next = nil       // since curr is the new last, make its link NULL.
+	return newHead
+
+}
+
 func main() {
 
-	var students *Student //create a new pointer variable called students
+	var students *Student //create a new blank Student
 
-	students = nil //assign the pointer to nil
+	students = nil //assign the pointer to nil as it is the end
 
 	if len(os.Args) < 2 { //if length of arguments is less than two
 		fmt.Println("There is no file")
@@ -49,6 +60,14 @@ func main() {
 		students = newStudent //our empty student now points to this new student created from the file
 	}
 	fmt.Println("Our list of students")
+	for s := students; s != nil; s = s.Next { //s equals students.Next (the pointer) as long as s is not nil (at the end of the list)
+		//print out the info and then go to the next student.
+		fmt.Println(s.name, s.age, s.ssn, s.Next)
+	}
+
+	students = reverse(students)
+
+	fmt.Println("Our list of students reversed")
 	for s := students; s != nil; s = s.Next { //s equals students.Next (the pointer) as long as s is not nil (at the end of the list)
 		//print out the info and then go to the next student.
 		fmt.Println(s.name, s.age, s.ssn, s.Next)
