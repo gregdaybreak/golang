@@ -18,9 +18,9 @@ type Student struct {
 
 func main() {
 
-	students := new(Student) //create a new blank Student
+	var students *Student //create a new blank Student
 
-	students.Next = nil //assign the pointer to nil as it is the end
+	students = nil //assign the pointer to nil as it is the end
 
 	if len(os.Args) < 2 { //if length of arguments is less than two
 		fmt.Println("There is no file")
@@ -42,14 +42,14 @@ func main() {
 		newStudent := &Student{ //populate our struct with the data
 			name: tempData[0],
 			ssn:  tempData[2],
-			Next: students.Next,
+			Next: students,
 		}
 		newStudent.age, _ = strconv.Atoi(tempData[1]) //convert the age to an integer and put it into the new students age
 
-		students.Next = newStudent //our empty student now points to this new student created from the file
+		students = newStudent //our empty student now points to this new student created from the file
 	}
 	fmt.Println("Our list of students")
-	for s := students.Next; s != nil; s = s.Next { //s equals students.Next (the pointer) as long as s is not nil (at the end of the list)
+	for s := students; s != nil; s = s.Next { //s equals students.Next (the pointer) as long as s is not nil (at the end of the list)
 		//print out the info and then go to the next student.
 		fmt.Println(s.name, s.age, s.ssn, s.Next)
 	}
