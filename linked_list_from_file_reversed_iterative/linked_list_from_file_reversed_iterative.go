@@ -19,20 +19,20 @@ type Student struct {
 func reverse(node *Student) *Student {
 	var prev *Student //a nil variable called prev for the previous node
 	var next *Student //a nil variable called next for our next node
-	head := node      //a variable for our current node
+	current := node   //a variable for our current node
 
-	for head != nil { //while we are not at the end of our linked list
+	for current != nil { //while we are not at the end of our linked list
 
-		next = head.Next //put the address of the next node in variable next to
+		next = current.Next //put the address of the next node in variable next to
 		//ensure we know how to get to the next node once the link
 		//is reversed
 
-		head.Next = prev //now we will point the current node to the previous node
+		current.Next = prev //now we will point the current node to the previous node
 		//which reverses the pointer
 
-		prev = head //prev is now moved up to become the current node
+		prev = current //prev is now moved up to become the current node
 
-		head = next //and head is moved up to point to the next node and ready
+		current = next //and current is moved up to point to the next node and ready
 		//to do the next loop around
 	}
 	return prev //prev is now our new head of the reversed list so lets return it
