@@ -10,6 +10,7 @@ func main() {
 }
 
 //Factor finds the factors of an integer and returns a slice of the factors
+//O(√2^n)
 func Factor(a int) []int {
 	factors := make([]int, 0, 6) //make a new slice to hold the factors
 	for a%2 == 0 {               //lets check the 2's first to remove them
