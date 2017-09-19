@@ -10,19 +10,19 @@ import (
 )
 
 func main() {
-	argString, _ := strconv.Atoi(os.Args[1]) //convert argument to int
+	arg, _ := strconv.Atoi(os.Args[1])       //convert argument to int
 	myMap := map[bool]int{true: 0, false: 0} //new map to hold bool count
 	for i := 0; i < 100; i++ {               //run 100 tests to be sure if it is prime or not
-		if Fermat(argString) == false { //run the Fermat function and get result
+		if Fermat(arg) == false { //run the Fermat function and get result
 			myMap[false]++ //increment false
 		} else {
 			myMap[true]++ //increment true
 		}
 	}
 	if myMap[false] > myMap[true] { //if false count is higher than true count
-		fmt.Println("The number is not prime")
+		fmt.Printf("The number %v is not prime\n", arg)
 	} else {
-		fmt.Println("The number is prime")
+		fmt.Printf("The number %v is prime\n", arg)
 	}
 }
 
