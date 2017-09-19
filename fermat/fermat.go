@@ -13,7 +13,7 @@ func main() {
 	argString, _ := strconv.Atoi(os.Args[1]) //convert argument to int
 	myMap := map[bool]int{true: 0, false: 0} //new map to hold bool count
 	for i := 0; i < 100; i++ {               //run 100 tests to be sure if it is prime or not
-		if Fermat(argString) == false {
+		if Fermat(argString) == false { //run the Fermat function and get result
 			myMap[false]++ //increment false
 		} else {
 			myMap[true]++ //increment true
