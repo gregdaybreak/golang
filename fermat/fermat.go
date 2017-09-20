@@ -19,10 +19,11 @@ func main() {
 			myMap[true]++ //increment true
 		}
 	}
-	if myMap[false] > myMap[true] { //if false count is higher than true count
-		fmt.Printf("The number %v is not prime\n", arg)
-	} else {
+	fmt.Println(myMap)
+	if myMap[true] > 30 { //if true count is greater than 30 we are pretty confident it is prime
 		fmt.Printf("The number %v is prime\n", arg)
+	} else {
+		fmt.Printf("The number %v is not prime\n", arg)
 	}
 }
 
