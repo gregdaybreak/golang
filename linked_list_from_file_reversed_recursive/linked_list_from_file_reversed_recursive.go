@@ -16,14 +16,14 @@ type Student struct {
 	Next *Student
 }
 
-func reverse(curr *Student) *Student {
-	if curr.Next == nil { //if the pointer of the next link is nil we know this is the last thing
-		return curr //return the last item in the list
+func reverse(head *Student) *Student {
+	if head == nil || head.Next == nil {
+		return head
 	}
-	newHead := reverse(curr.Next)
-	curr.Next.Next = curr //make curr link to the last node in the list
-	curr.Next = nil       // since curr is the new last, make its link NULL.
-	return newHead
+	p := reverse(head.Next)
+	head.Next.Next = head
+	head.Next = nil
+	return p
 
 }
 
