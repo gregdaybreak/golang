@@ -21,7 +21,11 @@ func reverse(head *Student) *Student {
 		return head
 	}
 	p := reverse(head.Next)
+	fmt.Println("BEFORE")
+	fmt.Println(head.Next.Next)
 	head.Next.Next = head
+	fmt.Println("AFTER")
+	fmt.Println(head.Next.Next)
 	head.Next = nil
 	return p
 
