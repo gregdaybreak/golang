@@ -9,6 +9,7 @@ import (
 	"strings"
 )
 
+//solution to code in game's Temperatures
 func main() {
 	var n int
 	fmt.Scanf("%d", &n) //scan in the first integer (number of temps to analyze)
