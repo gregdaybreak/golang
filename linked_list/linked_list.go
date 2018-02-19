@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-//Student is a structure with two pointers and a name
+//Student is a structure with a pointer and a name
 type Student struct {
 	next *Student
 	name string
