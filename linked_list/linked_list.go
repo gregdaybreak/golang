@@ -1,43 +1,77 @@
 package main
 
-
 import "fmt"
 
-type Student struct {  //we create a struct of Student
-  age int
-  weight int
-  name string
-  Next *Student   //this is the pointer to the next student if applicable
+//Student is a structure with two pointers and a name
+type Student struct {
+	next *Student
+	name string
 }
 
-type Teacher struct { //we create a struct of Teacher
-  age int
-  weight int
-  name string
-  Next *Student  //this is the pointer to the student down the line
+//List represents our linked list
+type List struct {
+	head *Student
+	tail *Student
+}
+
+//Insert something into the list
+func (L *List) Insert(name string) {
+	list := &Student{ //create a new variable list and put a new Student in it
+		next: L.head, //assign the next student to the head of the list
+		name: name,
+	}
+
+	L.head = list //put this new student as the head of the list
+
+	l := L.head         //assign the head of the list to variable l
+	for l.next != nil { //while the next is not nil (the end of the list)
+		l = l.next //assign the next student to l
+	}
+	L.tail = l //assign the tail of the list
+}
+
+//Show the list of Students
+func (L *List) Show() {
+	list := L.head    //assign the head of the list
+	for list != nil { //while we are not at the end of list
+		fmt.Printf("%+v ->", list.name) //print out the name
+		list = list.next                //go to the next student
+	}
+	fmt.Println() //newline
+}
+
+//Reverse the list
+func (L *List) Reverse() {
+	curr := L.head    //assign the head to a var curr
+	var prev *Student //assign a Student to a var called prev
+	L.tail = L.head   //the tail now equals the head
+
+	for curr != nil { //while the list is not empty
+		next := curr.next //next equals the current's next Student
+		curr.next = prev  //now the current next is the previous
+		prev = curr       //previous is now current
+		curr = next       //current is now the next
+	}
+	L.head = prev //the head is now prev
+
 }
 
 func main() {
-  kyle := Student{7, 70, "Kyle", nil}  //kyle is a new Student but he is in the
-                                       // back of line so he points to nil
+	l := List{}
+	l.Insert("Jack")
+	l.Insert("Sam")
+	l.Insert("Fred")
+	l.Insert("Greg")
+	l.Insert("Frank")
+	l.Insert("Jim")
 
-  john := Student{10, 100, "John", &kyle}  //john is the next student and is in
-                                           //front of kyle so he points to the
-                                           //address where kyle is
+	fmt.Printf("head: %v\n", l.head.name)
+	fmt.Printf("tail: %v\n", l.tail.name)
+	l.Show()
+	fmt.Println("Reversing the List!")
+	l.Reverse()
+	l.Show()
 
-  debra := Teacher{24, 185, "Debra", &john} //debra is the front of the line
-                                            //she points to the address where
-                                            //john is
-
-  fmt.Println("The teacher is", debra.name)
-  fmt.Println("The student directly behind Debra is", debra.Next.name) // the Teacher struct has a pointer to a student
-                                                                       // called Next. by calling debra.Next.name we are going into
-                                                                      // the struct for john and getting his name. (John)
-
-  fmt.Println("The student directly behind John is", debra.Next.Next.name) //we can also get to the student behind john (Kyle) through debra.
-
-  fmt.Println("The student directly behind John is", john.Next.name) //or get to Kyle through john
-
-  fmt.Println("The student directly behind Kyle is", kyle.Next) //Kyle is the last kid so his Next is nil (no one is behind him)
-  
+	fmt.Printf("head: %v\n", l.head.name)
+	fmt.Printf("tail: %v\n", l.tail.name)
 }
